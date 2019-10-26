@@ -39,6 +39,10 @@
     font-style: normal;
 }
 
+body {
+  background: url("./assets/images/torte.jpg") no-repeat left 2550px;
+}
+
 .header__block {
   margin: 0 auto 0 auto;
 }
@@ -109,5 +113,6 @@
   right: 3.5px;
   width: 180px;
 }
+
 </style>
 
