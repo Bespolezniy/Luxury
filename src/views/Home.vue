@@ -6,6 +6,7 @@
     <FoodMenu/>
     <ReviewsBlock/>
     <ReserveTable/>
+    <FooterBlock/>
   </main>
 </template>
 
@@ -17,6 +18,7 @@ import SpecialOffer from '@/components/SpecialOffer.vue';
 import FoodMenu from '@/components/FoodMenu.vue';
 import ReviewsBlock from '@/components/ReviewsBlock.vue';
 import ReserveTable from '@/components/ReserveTable.vue';
+import FooterBlock from '@/components/FooterBlock.vue';
 
 @Component({
   components: {
@@ -26,7 +28,9 @@ import ReserveTable from '@/components/ReserveTable.vue';
     FoodMenu,
     ReviewsBlock,
     ReserveTable,
+    FooterBlock,
   },
 })
+
 export default class Home extends Vue {}
 </script>
