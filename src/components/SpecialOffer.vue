@@ -1,175 +1,135 @@
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+@Component({
+
+})
+export default class SpecialOffer extends Vue {
+  get secondCarouselOptions(): object { return this.$store.getters.getSecondCarouselOptions; }
+  get slidesContent(): any[] { return this.$store.getters.getSecondCarouselSlides; }
+  private getHtmlForSlide(index: number, anotherindex: number): string {
+    return `<section>
+              <div>
+              <h4>${this.slidesContent[index].title}</h4>
+              <p>${this.slidesContent[index].text}</p>
+              <div><p>Home <span>delivary</span></p>
+              <b>${this.slidesContent[index].phone}</b>
+              <p><sup>$</sup>${this.slidesContent[index].price}</p>
+              </div>
+              </div>
+              <div>
+              <h4>${this.slidesContent[anotherindex].title}</h4>
+              <p>${this.slidesContent[anotherindex].text}</p>
+              <div><p>Home <span>delivary</span></p>
+              <b>${this.slidesContent[anotherindex].phone}</b>
+              <p><sup>$</sup>${this.slidesContent[anotherindex].price}</p>
+              </div>
+              </div>
+          '</section>`;
+  }
+}
+</script>
+
 <template>
-  <section class="offer__block">
-    <div class="special__block">
-      <div class="title__block"> 
-        <h2 class="text-center offer__title">Today Special</h2>
+  <section class="offer-block">
+
+    <div class="special-block">
+      <div class="title-block"> 
+        <h2 class="text-center offer-title">Today Special</h2>
       </div>
     </div>
-      <b-carousel
-        id="carousel-2"
-        :interval="2500"
-        indicators
-        background="transparent"
-        class="container"
-      >
 
-        <b-carousel-slide
-          class="slide"
-          text-html="<section>
-            <div>
-              <h4>Food Name One</h4>
-              <p>printing and typesetting industry. Lorem Ipsum has been the industry's 
-              standard dummy text ever since the 1500s, when an unknown printer took 
-              a galley of type and scrambled.</p>
-              <div>
-                <p>Home <span>delivary</span></p>
-                <b>1-008 005 006</b>
-                <p><sup>$</sup>89.00</p>
-              </div>
-            </div>
-            <div>
-              <h4>Food Name Two</h4>
-              <p>printing and typesetting industry. Lorem Ipsum has been the industry's 
-              standard dummy text ever since the 1500s, when an unknown printer took 
-              a galley of type and scrambled.</p>
-              <div>
-                <p>Home <span>delivary</span></p>
-                <b>1-008 005 006</b>
-                <p><sup>$</sup>99.00</p>
-              </div>
-            </div>
-            </section>"
-         ><template v-slot:img>
-            <img
-              class="col-6"
-              width="570"
-              height="420"
-              src="../assets/images/food-1.jpg"
-              alt="image slot"
-            >
-            <img
-              class="col-6"
-              width="570"
-              height="420"
-              src="../assets/images/food-2.jpg"
-              alt="image slot"
-            >
-          </template>
-        </b-carousel-slide>
+    <b-carousel
+      id="carousel-2"
+      :interval="secondCarouselOptions.interval"
+      :background="secondCarouselOptions.background"
+      class="container"
+      indicators
+    >
 
-        <b-carousel-slide
-          class="slide"
-          text-html="<section>
-            <div>
-              <h4>Food Name One</h4>
-              <p>printing and typesetting industry. Lorem Ipsum has been the industry's 
-              standard dummy text ever since the 1500s, when an unknown printer took 
-              a galley of type and scrambled.</p>
-              <div>
-                <p>Home <span>delivary</span></p>
-                <b>1-008 005 006</b>
-                <p><sup>$</sup>89.00</p>
-              </div>
-            </div>
-            <div>
-              <h4>Food Name Two</h4>
-              <p>printing and typesetting industry. Lorem Ipsum has been the industry's 
-              standard dummy text ever since the 1500s, when an unknown printer took 
-              a galley of type and scrambled.</p>
-              <div>
-                <p>Home <span>delivary</span></p>
-                <b>1-008 005 006</b>
-                <p><sup>$</sup>99.00</p>
-              </div>
-            </div>
-            </section>"
-         ><template v-slot:img>
-            <img
-              class="col-6"
-              width="570"
-              height="420"
-              src="../assets/images/food-1.jpg"
-              alt="image slot"
-            >
-            <img
-              class="col-6"
-              width="570"
-              height="420"
-              src="../assets/images/food-2.jpg"
-              alt="image slot"
-            >
-          </template>
-        </b-carousel-slide>
+      <b-carousel-slide
+        class="slide"
+        :text-html="getHtmlForSlide(0, 1)"
+        >
+        <template v-slot:img>
+          <img
+             class="col-6"
+             width="570"
+             height="420"
+             src="../assets/images/food-1.jpg"
+             alt="slide image1"
+           >
+          <img
+             class="col-6"
+             width="570"
+             height="420"
+             src="../assets/images/food-2.jpg"
+             alt="slide image2"
+           >
+        </template>
+      </b-carousel-slide>
 
-        <b-carousel-slide
-          class="slide"
-          text-html="<section>
-            <div>
-              <h4>Food Name One</h4>
-              <p>printing and typesetting industry. Lorem Ipsum has been the industry's 
-              standard dummy text ever since the 1500s, when an unknown printer took 
-              a galley of type and scrambled.</p>
-              <div>
-                <p>Home <span>delivary</span></p>
-                <b>1-008 005 006</b>
-                <p><sup>$</sup>89.00</p>
-              </div>
-            </div>
-            <div>
-              <h4>Food Name Two</h4>
-              <p>printing and typesetting industry. Lorem Ipsum has been the industry's 
-              standard dummy text ever since the 1500s, when an unknown printer took 
-              a galley of type and scrambled.</p>
-              <div>
-                <p>Home <span>delivary</span></p>
-                <b>1-008 005 006</b>
-                <p><sup>$</sup>99.00</p>
-              </div>
-            </div>
-            </section>"
-         ><template v-slot:img>
-            <img
-              class="col-6"
-              width="570"
-              height="420"
-              src="../assets/images/food-1.jpg"
-              alt="image slot"
-            >
-            <img
-              class="col-6"
-              width="570"
-              height="420"
-              src="../assets/images/food-2.jpg"
-              alt="image slot"
-            >
-          </template>
-        </b-carousel-slide>
+      <b-carousel-slide
+        class="slide"
+        :text-html="getHtmlForSlide(2, 3)"
+        >
+        <template v-slot:img>
+          <img
+             class="col-6"
+             width="570"
+             height="420"
+             src="../assets/images/food-3.jpg"
+             alt="slide image1"
+           >
+          <img
+             class="col-6"
+             width="570"
+             height="420"
+             src="../assets/images/food-4.jpg"
+             alt="slide image2"
+           >
+        </template>
+      </b-carousel-slide>
+
+      <b-carousel-slide
+        class="slide"
+        :text-html="getHtmlForSlide(4, 5)"
+        >
+        <template v-slot:img>
+          <img
+             class="col-6"
+             width="570"
+             height="420"
+             src="../assets/images/food-5.jpg"
+             alt="slide image1"
+           >
+          <img
+             class="col-6"
+             width="570"
+             height="420"
+             src="../assets/images/food-6.jpg"
+             alt="slide image2"
+           >
+        </template>
+      </b-carousel-slide>
+
     </b-carousel>
   </section>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-@Component
-export default class SpecialOffer extends Vue {
-
-}
-</script>
-
 <style>
-.offer__block {
+.offer-block {
     background: white url("../assets/images/pizza-back.jpg") no-repeat bottom right;
 }
 
 
-.special__block {
+.special-block {
     background: grey url("../assets/images/pizza.jpg") no-repeat center center;
     background-size: 100%;
     height: 440px;
 }
 
-.offer__title {
+.offer-title {
     color: white;
     font-family: 'PlayfairDisplay', sans-serif;
     font-size: 35px;
@@ -177,7 +137,7 @@ export default class SpecialOffer extends Vue {
     line-height: 25px;
 }
 
-.title__block {
+.title-block {
     background: rgba(0, 0, 0, .6);
     height: 100%;
     padding-top: 150px;

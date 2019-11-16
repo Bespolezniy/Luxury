@@ -1,5 +1,5 @@
 <template>
-    <section class="reviews-block mt-5 p-5 d-flex align-items-center flex-column">
+    <section id="Reviews" class="reviews-block mt-5 p-5 d-flex align-items-center flex-column">
         <h5 class="text-center text-white pt-3 mb-4 review-title">Happy Clients</h5>
         <p class="text-white text-review text-center">Many desktop publishing packages and web page editors now use Lorem Ipsum as 
             their default model text, and a search for 'lorem ipsum' will uncover many 

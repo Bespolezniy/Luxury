@@ -1,11 +1,15 @@
 <script lang="ts">
 import Vue from 'vue';
 import {store} from './store';
+import {mapGetters} from 'vuex';
 
 export default Vue.component('main-component', {
   template: '#app',
+  store,
   computed: {
-    CartItems: (): number => store.getters.getCartItems,
+    ...mapGetters({
+      cartItems: 'getCartItems',
+    }),
   },
 });
 </script>
@@ -23,7 +27,7 @@ export default Vue.component('main-component', {
         <router-link class="nav-item ml-4" to="/">Pages</router-link>
         <router-link class="nav-item ml-4" to="/about">Contact</router-link>
       </nav>
-      <router-link :items="CartItems" class="cart-link-item mt-2 mr-1" to="/about">Cart</router-link>
+      <router-link :items="cartItems" class="cart-link-item mt-2 mr-1" to="/about">Cart</router-link>
       <router-link class="btn btn-long btn-warning btn-book" to="/about">Book your table</router-link>
     </header>
     <router-view/>

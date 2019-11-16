@@ -1,83 +1,57 @@
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import foodMenu from '../modules/foodMenu';
+
+@Component
+export default class FoodMenu extends Vue {
+    get keyWord(): string { return this.$store.getters.getFilterKeyWord; }
+    get foodMenu(): [] { return this.$store.getters.getFoodMenu; }
+    private changeKeyWord(word: string) { return this.$store.dispatch('changeFilter', word); }
+    get sortedList() {
+        let keyWord = this.keyWord;
+        let arr: any = [];
+        this.foodMenu.forEach((element: []) => {
+            arr.push(element.filter((item: any) => {
+
+               if (item.type.includes(keyWord) || keyWord == 'all') {
+                    return true;
+               } else {
+                   return false;
+               }
+
+            }));
+            });
+
+        return arr;
+    }
+} 
+</script>
+
 <template>
-    <section class="container pb-5">
+    <section class="container pb-5" v-if="foodMenu">
         <h2 class="text-center title-food mb-4">FoodMenu</h2>
 
         <div class="row w-700 d-flex justify-content-center">
             <ul class="list-unstyled d-flex justify-content-between">
-                <li><button class="menu-btn d-flex flex-column justify-content-end align-items-center">All</button></li>
-                <li><button class="menu-btn d-flex flex-column justify-content-end align-items-center btn-breakfast">Breakfast</button></li>
-                <li><button class="menu-btn d-flex flex-column justify-content-end align-items-center btn-lunch">Lunch</button></li>
-                <li><button class="menu-btn d-flex flex-column justify-content-end align-items-center btn-snacks">Snacks</button></li>
-                <li><button class="menu-btn d-flex flex-column justify-content-end align-items-center btn-pizza">Pizza</button></li>
-                <li><button class="menu-btn d-flex flex-column justify-content-end align-items-center btn-soups">Soups</button></li>
-                <li><button class="menu-btn d-flex flex-column justify-content-end align-items-center btn-dinner">Dinner</button></li>
+                <li><button v-on:click="changeKeyWord('all')" class="menu-btn d-flex flex-column justify-content-end align-items-center">All</button></li>
+                <li><button v-on:click="changeKeyWord('breakfast')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-breakfast">Breakfast</button></li>
+                <li><button v-on:click="changeKeyWord('lunch')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-lunch">Lunch</button></li>
+                <li><button v-on:click="changeKeyWord('snacks')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-snacks">Snacks</button></li>
+                <li><button v-on:click="changeKeyWord('pizza')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-pizza">Pizza</button></li>
+                <li><button v-on:click="changeKeyWord('soups')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-soups">Soups</button></li>
+                <li><button v-on:click="changeKeyWord('dinner')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-dinner">Dinner</button></li>
             </ul>
         </div>
 
         <table class="row col-12 table-block pt-5">
 
-            <tr class="d-flex col-12">
-                <td class="d-flex justify-content-between align-items-center col-6 pl-0 mr-4">
+            <tr class="d-flex col-12" :key="index" v-for="(pair, index) in sortedList">
+                    <td class="d-flex justify-content-between align-items-center col-6 pl-0 mr-4" :key="item.id" v-for="item in pair" >       
                     <div class="cell d-flex flex-column justify-content-end">
-                        <b class="cell-title">Ultimate organic fruit salad</b>
-                        <p class="cell-text">survived not only five centuries but the leap</p>
+                        <b class="cell-title">{{item.title}}</b>
+                        <p class="cell-text">{{item.description}}</p>
                     </div>
-                    <span class="cell-price mr-3"><sup>$</sup>50.00</span>
-                </td>
-                <td class="d-flex justify-content-between align-items-center col-6 pl-0">
-                    <div class="cell d-flex flex-column justify-content-end">
-                        <b class="cell-title">Ultimate organic fruit salad</b>
-                        <p class="cell-text">survived not only five centuries but the leap</p>
-                    </div>
-                    <span class="cell-price mr-3"><sup>$</sup>50.00</span>
-                </td>
-            </tr>
-            <tr class="d-flex col-12">
-                <td class="d-flex justify-content-between align-items-center col-6 pl-0 mr-4">
-                    <div class="cell d-flex flex-column justify-content-end">
-                        <b class="cell-title">Plain pancakes</b>
-                        <p class="cell-text">Donec eget augue at diam euismod viverra</p>
-                    </div>
-                    <span class="cell-price mr-3"><sup>$</sup>68.00</span>
-                </td>
-                <td class="d-flex justify-content-between align-items-center col-6 pl-0">
-                    <div class="cell d-flex flex-column justify-content-end">
-                        <b class="cell-title">Plain pancakes</b>
-                        <p class="cell-text">Donec eget augue at diam euismod viverra</p>
-                    </div>
-                    <span class="cell-price mr-3"><sup>$</sup>68.00</span>
-                </td>
-            </tr>
-            <tr class="d-flex col-12">
-                <td class="d-flex justify-content-between align-items-center col-6 pl-0 mr-4">
-                    <div class="cell d-flex flex-column justify-content-end">
-                        <b class="cell-title">Toasted jam</b>
-                        <p class="cell-text">Phasellus a ex accumsan, sollicitudin</p>
-                    </div>
-                    <span class="cell-price mr-3"><sup>$</sup>22.00</span>
-                </td>
-                <td class="d-flex justify-content-between align-items-center col-6 pl-0">
-                    <div class="cell d-flex flex-column justify-content-end">
-                        <b class="cell-title">Toasted jam</b>
-                        <p class="cell-text">Phasellus a ex accumsan, sollicitudin</p>
-                    </div>
-                    <span class="cell-price mr-3"><sup>$</sup>22.00</span>
-                </td>
-            </tr>
-            <tr class="d-flex col-12">
-                <td class="d-flex justify-content-between align-items-center col-6 pl-0 mr-4 last-item">
-                    <div class="cell d-flex flex-column justify-content-end">
-                        <b class="cell-title">Toasted jam</b>
-                        <p class="cell-text">Phasellus a ex accumsan, sollicitudin</p>
-                    </div>
-                    <span class="cell-price mr-3"><sup>$</sup>39.00</span>
-                </td>
-                <td class="d-flex justify-content-between align-items-center col-6 pl-0 last-item">
-                    <div class="cell d-flex flex-column justify-content-end">
-                        <b class="cell-title">Toasted jam</b>
-                        <p class="cell-text">Phasellus a ex accumsan, sollicitudin</p>
-                    </div>
-                    <span class="cell-price mr-3"><sup>$</sup>39.00</span>
+                    <span class="cell-price mr-3"><sup>$</sup>{{item.price}}</span>
                 </td>
             </tr>
 
@@ -87,15 +61,6 @@
         </div>
     </section>
 </template>
-
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-@Component
-export default class FoodMenu extends Vue {
-
-}
-</script>
 
 <style>
     .title-food {
@@ -166,6 +131,8 @@ export default class FoodMenu extends Vue {
         color: #fea100;
         font-size: 26px;
         font-weight: bold;
+        position: absolute;
+        left: 80%;
     }
 
     .btn-explore {

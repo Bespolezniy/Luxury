@@ -1,49 +1,36 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import firstSlider from './modules/firstSlider';
+import secondSlider from './modules/secondSlider';
+import foodMenu from './modules/foodMenu';
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
+  modules: {
+    firstSlider,
+    secondSlider,
+    foodMenu,
+  },
   state: {
     cartItems: 1,
-    firstCarouselOptions: {
-      interval: 2500,
-      background: '#ababab',
-      width: 1024,
-      height: 570,
-    },
-    firstCarouselSlides: [
-      {
-        id: 1,
-        caption: 'Teast your fav dish',
-        textHtml: 'from <span>luxury restaurent</span>',
-        imgSrc: './assets/images/slide1.jpg',
-      },
-      {
-        id: 2,
-        caption: 'Call us',
-        textHtml: 'for <span>home delivery</span>',
-        imgSrc: './assets/images/slide2.jpg',
-      },
-      {
-        id: 3,
-        caption: 'Read reviews',
-        textHtml: 'about <span>our restaurent</span>',
-        imgSrc: './assets/images/slide3.jpg',
-      },
-    ],
+    keyWord: 'breakfast',
   },
   mutations: {
-    incrementCartItems(state): void {
+    addCartItem(state: any): void {
        state.cartItems++;
+    },
+    changeFilterKeyWord(state: any, payload: string): void {
+      state.keyWord = payload;
     },
   },
   getters: {
-    getCartItems: (state): number => state.cartItems,
-    getCarouselOptions: (state): object => state.firstCarouselOptions,
-    getCarouselSlides: (state): object => state.firstCarouselSlides,
+    getCartItems: (state: any): number => state.cartItems,
+    getFilterKeyWord: (state: any): string => state.keyWord,
   },
   actions: {
-
+    changeFilter(context, word: string): void {
+      context.commit('changeFilterKeyWord', word);
+    },
   },
 });

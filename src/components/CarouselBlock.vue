@@ -1,20 +1,15 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import {store} from '../store';
 
 @Component
 export default class CarouselBlock extends Vue {
-  private data(): object {
-    return {
-      carouselOptions: store.getters.getCarouselOptions,
-      carouselSlides: store.getters.getCarouselSlides,
-    };
-  }
+  get carouselOptions(): object { return this.$store.getters.getCarouselOptions; }
+  get carouselSlides(): object { return this.$store.getters.getCarouselSlides; }
 }
 </script>
 
 <template id="carousel-block">
-  <section class="slider__block mt-3">
+  <section class="slider-block mt-3">
     <b-carousel
       id="carousel-1"
       :interval="carouselOptions.interval"
@@ -24,29 +19,43 @@ export default class CarouselBlock extends Vue {
       indicators
     >
 
-      <b-carousel-slide :key="slide.id" v-for="slide in carouselSlides"
-        :caption="slide.caption"
-        :text-html="slide.textHtml"
-        :img-src="slide.imgSrc"
-        class="carousel__slide"
+      <b-carousel-slide  
+        :caption="carouselSlides[0].caption"
+        :text-html="carouselSlides[0].textHtml"
+        img-src="../assets/images/slide1.jpg"
+        class="carousel-slide"
+      ></b-carousel-slide>
+
+      <b-carousel-slide  
+        :caption="carouselSlides[1].caption"
+        :text-html="carouselSlides[1].textHtml"
+        img-src="../assets/images/slide2.jpg"
+        class="carousel-slide"
+      ></b-carousel-slide>
+
+      <b-carousel-slide  
+        :caption="carouselSlides[2].caption"
+        :text-html="carouselSlides[2].textHtml"
+        img-src="../assets/images/slide3.webp"
+        class="carousel-slide"
       ></b-carousel-slide>
 
     </b-carousel>
-    <div class="slider__info container row d-flex justify-content-end">
-      <div class="banner__menu d-flex justify-content-center align-items-center">
-        <div class="menu__img d-flex justify-content-center align-items-center">
+    <div class="slider-info container row d-flex justify-content-end">
+      <div class="banner-menu d-flex justify-content-center align-items-center">
+        <div class="menu-img d-flex justify-content-center align-items-center">
           <img src="../assets/images/icon_food.png" alt="Menu">
         </div>
         <router-link to="/about">Explore food menu</router-link>
       </div>
       <div class="d-flex justify-content-center align-items-center mr-4">
         <img src="../assets/images/icon_reviews.png" alt="Reviews">
-        <p class="reviews__text m-3">Read <span>reviews</span></p>
-        <a class="btn__reviews d-flex justify-content-center align-items-center" href="#">Reviews</a>
+        <p class="reviews-text m-3">Read <span>reviews</span></p>
+        <a class="btn-reviews d-flex justify-content-center align-items-center" href="#Reviews">Reviews</a>
       </div>
       <div class="d-flex justify-content-center align-items-center">
         <img src="../assets/images/icon_phone1.png" alt="Phone">
-        <p class="phone__text m-3">Call us now for <span>home delivery</span></p>
+        <p class="phone-text m-3">Call us now for <span>home delivery</span></p>
         <a href="#"></a>
       </div>
       <div class="d-flex justify-content-center align-items-center mb-3">
@@ -67,13 +76,13 @@ export default class CarouselBlock extends Vue {
     font-style: normal;
 }
 
-  .slider__block {
+  .slider-block {
     background: #edf1f3;
     font-family: "PlayfairDisplay", sans-serif;
     position: relative;
   }
 
-  .carousel__slide {
+  .carousel-slide {
     height: 570px;
     line-height: 30px;
   }
@@ -127,7 +136,7 @@ export default class CarouselBlock extends Vue {
     width: 4px;
   }
 
-  .slider__info {
+  .slider-info {
     border-bottom: 1px solid #dde3e7;
     font-family: "Sintony", sans-serif;
     font-weight: 700;
@@ -141,7 +150,7 @@ export default class CarouselBlock extends Vue {
     line-height: 22px;
   }
 
-  .banner__menu {
+  .banner-menu {
     background: url("../assets/images/shape-line.png") no-repeat center center,
     url("../assets/images/shape.png") no-repeat center center;
     height: 200px;
@@ -153,14 +162,14 @@ export default class CarouselBlock extends Vue {
     width: 200px;
   }
 
-  .banner__menu a {
+  .banner-menu a {
     color: white;
     font-size: 22px;
     text-align: center;
     width: 110px;
   }
 
-  .menu__img {
+  .menu-img {
     background: black;
     border: 2px solid #fe4c8d;
     border-radius: 50%;
@@ -170,24 +179,24 @@ export default class CarouselBlock extends Vue {
     width: 77px;
   }
 
-  .reviews__text,
-  .phone__text {
+  .reviews-text,
+  .phone-text {
     font-size: 14px;
     text-transform: uppercase;
     width: 70px;
   }
 
-  .phone__text {
+  .phone-text {
     width: 150px;
   }
 
-  .reviews__text span,
-  .phone__text span {
+  .reviews-text span,
+  .phone-text span {
     color: #fea100;
     font-size: 16px;
   }
 
-  .btn__reviews {
+  .btn-reviews {
     background: #fea100 url("../assets/images/arrow_menu.png") no-repeat center center;
     border-radius: 50%;
     color: transparent;
@@ -197,7 +206,7 @@ export default class CarouselBlock extends Vue {
     width: 45px;
   }
 
-  .btn__reviews::before {
+  .btn-reviews::before {
     border: 1px solid white;
     border-radius: 50%;
     content: "";
@@ -208,7 +217,7 @@ export default class CarouselBlock extends Vue {
     width: 40px;
   }
 
-  .btn__reviews:hover {
+  .btn-reviews:hover {
     color: transparent;
     opacity: .6;
   }
