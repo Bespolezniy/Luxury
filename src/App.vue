@@ -20,15 +20,15 @@ export default Vue.component('main-component', {
       <router-link to="/"><img alt="Vue logo" src="./assets/images/logo.png"></router-link>
       <nav id="nav" class="mt-2 ml-3 mr-0">
         <router-link class="nav-item ml-4" to="/">Home</router-link> 
-        <router-link class="nav-item ml-4" to="/">Menu</router-link>
-        <router-link class="nav-item ml-4" to="/">Reservation</router-link>
+        <router-link class="nav-item ml-4" to="/menu">Menu</router-link>
+        <router-link class="nav-item ml-4" to="/reservation">Reservation</router-link>
         <router-link class="nav-item ml-4" to="/">Recipe</router-link>
         <router-link class="nav-item ml-4" to="/">Blog</router-link>
         <router-link class="nav-item ml-4" to="/">Pages</router-link>
         <router-link class="nav-item ml-4" to="/about">Contact</router-link>
       </nav>
       <router-link :items="cartItems" class="cart-link-item mt-2 mr-1" to="/about">Cart</router-link>
-      <router-link class="btn btn-long btn-warning btn-book" to="/about">Book your table</router-link>
+      <router-link class="btn btn-long btn-warning btn-book" to="/reservation">Book your table</router-link>
     </header>
     <router-view/>
   </div>

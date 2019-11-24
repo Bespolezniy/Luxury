@@ -1,26 +1,42 @@
-<template>
-    <section id="Reviews" class="reviews-block mt-5 p-5 d-flex align-items-center flex-column">
-        <h5 class="text-center text-white pt-3 mb-4 review-title">Happy Clients</h5>
-        <p class="text-white text-review text-center">Many desktop publishing packages and web page editors now use Lorem Ipsum as 
-            their default model text, and a search for 'lorem ipsum' will uncover many 
-            web sites still in their infancy. Various versions have evolved over the years, 
-            sometimes by accident, sometimes on purpose. </p>
-        <img src="../assets/images/author1.png" alt="Author">
-        <b class="text-white review-author">Dr. Prabakaran John</b>
-        <ul class="review-stars pl-0">
-            <li><img src="../assets/images/icon_star.png" alt="Star"></li>
-        </ul>
-        <button class="btn-slider btn-next">Next</button>
-        <button class="btn-slider">Preview</button>
-    </section>
-</template>
-<script>
+<script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class ReviewsBlock extends Vue {
+    get reviews(): [] {
+       return this.$store.getters.getReviews;
+    }
+    get currentReviewIndex(): number {
+        return this.$store.getters.getCurrentReviewsIndex;
+    }
+    private changeReview(action: string) {
+        if (action === 'next' && this.reviews.length - 1 === this.currentReviewIndex) {
+            return;
+        }
+        if (action === 'preview' && 0 === this.currentReviewIndex) {
+            return;
+        }
+        return this.$store.dispatch('changeReview', action);
+    }
 }
 </script>
+
+<template>
+    <section id="Reviews" class="reviews-block mt-5 p-5 d-flex align-items-center flex-column">
+        <h5 class="text-center text-white pt-3 mb-4 review-title">Happy Clients</h5>
+        <p class="text-white text-review text-center">{{reviews[currentReviewIndex].text}}</p>
+        <img class="author-img" v-if="currentReviewIndex === 0" src="../assets/images/author1.png" alt="Author" width="75" height="75">
+        <img class="author-img" v-if="currentReviewIndex === 1" src="../assets/images/person-2.jpg" alt="Author" width="75" height="75">
+        <img class="author-img" v-if="currentReviewIndex === 2" src="../assets/images/person-3.jpg" alt="Author" width="75" height="75">
+        <b class="text-white review-author">{{reviews[currentReviewIndex].name}}</b>
+        <ul class="review-stars pl-0">
+            <li><img :key="index" v-for="(star, index) in reviews[currentReviewIndex].stars" src="../assets/images/icon_star.png" alt="Star" width="23" height="13"></li>
+        </ul>
+        <button @click="changeReview('next')" class="btn-slider btn-next">Next</button>
+        <button @click="changeReview('preview')" class="btn-slider">Preview</button>
+    </section>
+</template>
+
 <style scoped>
     .reviews-block {
         background: url("../assets/images/background.png") no-repeat center center;
@@ -77,5 +93,9 @@ export default class ReviewsBlock extends Vue {
     .btn-next {
         left: 80%;
         transform: rotate(180deg);
+    }
+
+    .author-img {
+        border-radius: 50%;
     }
 </style>

@@ -8,23 +8,22 @@ export default class FoodMenu extends Vue {
     get foodMenu(): [] { return this.$store.getters.getFoodMenu; }
     private changeKeyWord(word: string) { return this.$store.dispatch('changeFilter', word); }
     get sortedList() {
-        let keyWord = this.keyWord;
-        let arr: any = [];
+        const keyWord = this.keyWord;
+        const arr: any = [];
         this.foodMenu.forEach((element: []) => {
             arr.push(element.filter((item: any) => {
 
-               if (item.type.includes(keyWord) || keyWord == 'all') {
+               if (item.type.includes(keyWord) || keyWord === 'all') {
                     return true;
                } else {
                    return false;
                }
 
             }));
-            });
-
+            });        
         return arr;
     }
-} 
+}
 </script>
 
 <template>
@@ -33,13 +32,13 @@ export default class FoodMenu extends Vue {
 
         <div class="row w-700 d-flex justify-content-center">
             <ul class="list-unstyled d-flex justify-content-between">
-                <li><button v-on:click="changeKeyWord('all')" class="menu-btn d-flex flex-column justify-content-end align-items-center">All</button></li>
-                <li><button v-on:click="changeKeyWord('breakfast')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-breakfast">Breakfast</button></li>
-                <li><button v-on:click="changeKeyWord('lunch')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-lunch">Lunch</button></li>
-                <li><button v-on:click="changeKeyWord('snacks')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-snacks">Snacks</button></li>
-                <li><button v-on:click="changeKeyWord('pizza')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-pizza">Pizza</button></li>
-                <li><button v-on:click="changeKeyWord('soups')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-soups">Soups</button></li>
-                <li><button v-on:click="changeKeyWord('dinner')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-dinner">Dinner</button></li>
+                <li><button @click="changeKeyWord('all')" class="menu-btn d-flex flex-column justify-content-end align-items-center">All</button></li>
+                <li><button @click="changeKeyWord('breakfast')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-breakfast">Breakfast</button></li>
+                <li><button @click="changeKeyWord('lunch')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-lunch">Lunch</button></li>
+                <li><button @click="changeKeyWord('snacks')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-snacks">Snacks</button></li>
+                <li><button @click="changeKeyWord('pizza')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-pizza">Pizza</button></li>
+                <li><button @click="changeKeyWord('soups')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-soups">Soups</button></li>
+                <li><button @click="changeKeyWord('dinner')" class="menu-btn d-flex flex-column justify-content-end align-items-center btn-dinner">Dinner</button></li>
             </ul>
         </div>
 
@@ -57,7 +56,7 @@ export default class FoodMenu extends Vue {
 
         </table>
         <div class="d-flex justify-content-center align-items-center pt-5">
-            <router-link class="btn btn-long btn-warning btn-explore" to="/about">Explore food menu</router-link>
+            <router-link class="btn btn-long btn-warning btn-explore" to="/menu">Explore food menu</router-link>
         </div>
     </section>
 </template>

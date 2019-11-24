@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import firstSlider from './modules/firstSlider';
 import secondSlider from './modules/secondSlider';
 import foodMenu from './modules/foodMenu';
+import clientsReviews from './modules/clientsReviews';
 
 Vue.use(Vuex);
 
@@ -11,10 +12,12 @@ export const store = new Vuex.Store({
     firstSlider,
     secondSlider,
     foodMenu,
+    clientsReviews,
   },
   state: {
     cartItems: 1,
-    keyWord: 'breakfast',
+    keyWord: 'all',
+    currentReviewsIndex: 0,
   },
   mutations: {
     addCartItem(state: any): void {
@@ -23,14 +26,25 @@ export const store = new Vuex.Store({
     changeFilterKeyWord(state: any, payload: string): void {
       state.keyWord = payload;
     },
+    changeReviewIndex(state: any, payload: string): void {
+        if (payload === 'next') {
+          state.currentReviewsIndex++;
+        } else {
+          state.currentReviewsIndex--;
+        }
+    },
   },
   getters: {
     getCartItems: (state: any): number => state.cartItems,
     getFilterKeyWord: (state: any): string => state.keyWord,
+    getCurrentReviewsIndex: (state: any): number => state.currentReviewsIndex,
   },
   actions: {
     changeFilter(context, word: string): void {
       context.commit('changeFilterKeyWord', word);
+    },
+    changeReview(context, action: string): void {
+      context.commit('changeReviewIndex', action);
     },
   },
 });

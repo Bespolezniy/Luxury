@@ -1,3 +1,9 @@
+<script lang="ts">
+import Vue from 'vue';
+export default Vue.extend({
+});
+</script>
+
 <template>
     <footer class="container-fluid footer-block pb-4">
         <div class="container d-flex pt-5">
@@ -6,19 +12,19 @@
                 <ul class="footer-nav pl-0 mt-3">
                     <li><router-link class="f-nav-item" to="/">Home</router-link></li> 
                     <li><router-link class="f-nav-item" to="/">About us</router-link></li>
-                    <li><router-link class="f-nav-item" to="/">Menu</router-link></li>
-                    <li><router-link class="f-nav-item" to="/">Reservation</router-link></li>
+                    <li><router-link class="f-nav-item" to="/menu">Menu</router-link></li>
+                    <li><router-link class="f-nav-item" to="/reservation">Reservation</router-link></li>
                     <li><router-link class="f-nav-item" to="/">Recipe</router-link></li>
                     <li><router-link class="f-nav-item" to="/">Block</router-link></li>
                     <li><router-link class="f-nav-item" to="/about">Contact us</router-link></li>
                 </ul>
             </div>
             <div class="col-6 mt-3">
-            <form action="#">
+            <form method="post" action="#">
                 <h4 class="text-white footer-title">News letter</h4>
                     <label class="f-input-label mt-3" for="f-input">Enter your email address and subscribe daily newsletter</label>
                 <div class="d-flex align-items-center mt-2">
-                    <input id="f-input" class="f-input" type="email" placeholder="Email Address">
+                    <input id="f-input" class="f-input" type="email" placeholder="Email Address" required pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/">
                     <button class="ml-1 btn btn-long btn-warning btn-subscribe" type="submit">Subscribe</button>
                 </div>
             </form>
@@ -53,12 +59,6 @@
         </div>
     </footer>
 </template>
-
-<script lang="ts">
-import Vue from 'vue';
-export default Vue.extend({
-});
-</script>
 
 <style scoped>
     .footer-block {

@@ -2,7 +2,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({
-
+  
 })
 export default class SpecialOffer extends Vue {
   get secondCarouselOptions(): object { return this.$store.getters.getSecondCarouselOptions; }

@@ -1,15 +1,3 @@
-<template>
-  <main class="home">
-    <CarouselBlock/>
-    <InfoBlock/>
-    <SpecialOffer/>
-    <FoodMenu/>
-    <ReviewsBlock/>
-    <ReserveTable/>
-    <FooterBlock/>
-  </main>
-</template>
-
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import CarouselBlock from '@/components/CarouselBlock.vue'; // @ is an alias to /src
@@ -34,3 +22,15 @@ import FooterBlock from '@/components/FooterBlock.vue';
 
 export default class Home extends Vue {}
 </script>
+
+<template>
+  <main class="home">
+    <CarouselBlock/>
+    <InfoBlock/>
+    <SpecialOffer/>
+    <FoodMenu/>
+    <ReviewsBlock/>
+    <ReserveTable/>
+    <FooterBlock/>
+  </main>
+</template>
