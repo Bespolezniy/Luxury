@@ -24,5 +24,20 @@ export default new Router({
       name: 'reservation',
       component: () => import(/* webpackChunkName: "menu" */ './views/Reservation.vue'),
     },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import(/* webpackChunkName: "menu" */ './views/AboutUs.vue'),
+    },
+    {
+      path: '/blog',
+      name: 'blog',
+      component: () => import(/* webpackChunkName: "menu" */ './views/Blog.vue'),
+    },
+    {
+      path: '*',
+      name: 'notfound',
+      component: () => import(/* webpackChunkName: "menu" */ './views/NotFound.vue'),
+    },
   ],
 });

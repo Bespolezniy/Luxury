@@ -16,18 +16,18 @@ export default Vue.component('main-component', {
 
 <template id="main">
   <div class="container-fluid pt-3" id="app">
-    <header class="container row d-flex justify-content-between header-block">
-      <router-link to="/"><img alt="Vue logo" src="./assets/images/logo.png"></router-link>
-      <nav id="nav" class="mt-2 ml-3 mr-0">
-        <router-link class="nav-item ml-4" to="/">Home</router-link> 
-        <router-link class="nav-item ml-4" to="/menu">Menu</router-link>
-        <router-link class="nav-item ml-4" to="/reservation">Reservation</router-link>
-        <router-link class="nav-item ml-4" to="/">Recipe</router-link>
-        <router-link class="nav-item ml-4" to="/">Blog</router-link>
-        <router-link class="nav-item ml-4" to="/">Pages</router-link>
-        <router-link class="nav-item ml-4" to="/about">Contact</router-link>
+    <header class="container row d-flex justify-content-between align-items-center header-block">
+      <router-link class="header-logo" to="/"><img alt="Vue logo" src="./assets/images/logo.png"></router-link>
+      <nav id="nav" class="nav mt-2 ml-2 mr-0">
+        <router-link class="nav-link" to="/">Home</router-link> 
+        <router-link class="nav-link" to="/menu">Menu</router-link>
+        <router-link class="nav-link" to="/reservation">Reservation</router-link>
+        <router-link class="nav-link" to="/">Recipe</router-link>
+        <router-link class="nav-link" to="/blog">Blog</router-link>
+        <router-link class="nav-link" to="/">Pages</router-link>
+        <router-link class="nav-link" to="/about">Contact</router-link>
       </nav>
-      <router-link :items="cartItems" class="cart-link-item mt-2 mr-1" to="/about">Cart</router-link>
+      <router-link :items="cartItems" class="cart-link-item mt-2 mr-2" to="/about">Cart</router-link>
       <router-link class="btn btn-long btn-warning btn-book" to="/reservation">Book your table</router-link>
     </header>
     <router-view/>
@@ -35,6 +35,16 @@ export default Vue.component('main-component', {
 </template>
 
 <style>
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('./assets/fonts/PlayfairDisplay/playfairdisplaybold.woff2') format('woff2'), 
+    url('./assets/fonts/PlayfairDisplay/playfairdisplaybold.woff') format('woff'), 
+    url('./assets/fonts/PlayfairDisplay/playfairdisplaybold.ttf') format('truetype');
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+}
+
 @font-face {
     font-family: 'Sintony';
     src: url('./assets/fonts/Sintony/sintonybold.woff2') format('woff2'), 
@@ -63,7 +73,19 @@ body {
   margin: 0 auto 0 auto;
 }
 
-.nav-item {
+.header-logo {
+  transition-delay: .15s;
+}
+
+.header-logo:hover {
+  opacity: 0.6;
+}
+
+.header-logo:active {
+  opacity: 0.3;
+}
+
+.nav-link {
   color: #2c465a;
   font-family: "Sintony", sans-serif;
   line-height: 30px;

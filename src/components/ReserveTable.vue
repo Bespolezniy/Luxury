@@ -1,7 +1,7 @@
 <script lang="ts">
 import Vue from 'vue';
 export default class ReserveTable extends Vue {
-};
+}
 </script>
 
 <template>

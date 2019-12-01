@@ -1,7 +1,7 @@
 <script lang="ts">
 import Vue from 'vue';
 export default class SpecialReservation extends Vue {
-};
+}
 </script>
 
 <template>
@@ -9,7 +9,7 @@ export default class SpecialReservation extends Vue {
         <h2 class="text-center">Special Reservation</h2>
         <div class="container d-flex pt-4 pb-5">
             <div class="col-4">
-                <img src="../assets/images/reservation.jpeg" alt="reservation img" width="100%" height="210">
+                <img src="../assets/images/one-table.jpg" alt="reservation img" width="100%" height="210">
                 <div class="reservation-info p-4">
                     <h5 class="reservation-info-title mt-3">Private Dinning</h5>
                     <p class="reservation-info-text">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
@@ -29,7 +29,7 @@ export default class SpecialReservation extends Vue {
                 </div>
             </div>
             <div class="col-4">
-                <img src="../assets/images/reservation.jpeg" alt="reservation img" width="100%" height="210">
+                <img src="../assets/images/couple.jpg" alt="reservation img" width="100%" height="210">
                 <div class="reservation-info p-4">
                     <h5 class="reservation-info-title mt-3">Couple Dinning</h5>
                     <p class="reservation-info-text">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 

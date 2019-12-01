@@ -11,7 +11,7 @@ export default class BookTable extends Vue {
     get checkForm(): void {
         return;
     }
-};
+}
 </script>
 
 <template>

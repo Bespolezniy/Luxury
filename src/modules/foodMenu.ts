@@ -64,6 +64,70 @@ const state = {
                 id: 107,
             },
         ],
+        [
+            {
+                title: 'ULTIMATE ORGANIC FRUIT SALAD',
+                description: 'survived not only five centuries but the leap',
+                price: '50.00',
+                type: ['lunch', 'dinner'],
+                id: 108,
+            },
+            {
+                title: 'PLAIN PANCAKES',
+                description: 'Donec eget augue at diam euismod viverra',
+                price: '68.00',
+                type: ['snacks', 'dinner', 'lunch'],
+                id: 109,
+            },
+        ],
+        [
+            {
+                title: 'SURMAI CHILI',
+                description: 'Phasellus a ex accumsan, sollicitudin',
+                price: '39.00',
+                type: ['lunch', 'dinner'],
+                id: 110,
+            },
+            {
+                title: 'SODE CADAI',
+                description: 'Donec eget augue at diam euismod viverra',
+                price: '49.00',
+                type: ['snacks', 'dinner', 'lunch', 'breakfast'],
+                id: 111,
+            },
+        ],
+        [
+            {
+                title: 'MARGARITA PIZZA',
+                description: 'Donec augue at euismod viverra',
+                price: '30.00',
+                type: ['dinner', 'lunch', 'pizza'],
+                id: 112,
+            },
+            {
+                title: 'VANILA ICE CREAM',
+                description: 'Donec augue at euismod viverra',
+                price: '30.00',
+                type: ['snacks', 'lunch', 'dinner'],
+                id: 113,
+            },
+        ],
+        [
+            {
+                title: 'Prawns butter garlic',
+                description: 'Phasellus a ex accumsan, sollicitudin',
+                price: '85.00',
+                type: ['dinner', 'snacks'],
+                id: 114,
+            },
+            {
+                title: 'SUKHAT CHANTEI',
+                description: 'Phasellus a ex accumsan, sollicitudin',
+                price: '40.00',
+                type: ['soups', 'lunch', 'dinner'],
+                id: 115,
+            },
+        ],
     ],
 };
 

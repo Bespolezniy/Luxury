@@ -4,13 +4,14 @@ import foodMenu from '../modules/foodMenu';
 
 @Component
 export default class FoodMenu extends Vue {
+    get defaultLenghtMenu(): number { return 4; }
     get keyWord(): string { return this.$store.getters.getFilterKeyWord; }
     get foodMenu(): [] { return this.$store.getters.getFoodMenu; }
     private changeKeyWord(word: string) { return this.$store.dispatch('changeFilter', word); }
     get sortedList() {
         const keyWord = this.keyWord;
         const arr: any = [];
-        this.foodMenu.forEach((element: []) => {
+        this.foodItems.forEach((element: []) => {
             arr.push(element.filter((item: any) => {
 
                if (item.type.includes(keyWord) || keyWord === 'all') {
@@ -23,6 +24,12 @@ export default class FoodMenu extends Vue {
             });        
         return arr;
     }
+    get openMenu(): boolean { return this.$store.getters.getMenuStatus; }
+    get foodItems(): any {
+     const length = this.openMenu ? this.foodMenu.length : this.defaultLenghtMenu;
+     return this.foodMenu.slice(0, length);
+    }
+    private openMenuHandle(): any { return this.$store.dispatch('openMenu') }
 }
 </script>
 
@@ -56,7 +63,7 @@ export default class FoodMenu extends Vue {
 
         </table>
         <div class="d-flex justify-content-center align-items-center pt-5">
-            <router-link class="btn btn-long btn-warning btn-explore" to="/menu">Explore food menu</router-link>
+            <button class="btn btn-long btn-warning btn-explore" @click="openMenuHandle()">{{openMenu ? 'close': 'explore food menu'}}</button>
         </div>
     </section>
 </template>

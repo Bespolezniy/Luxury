@@ -11,11 +11,11 @@ export default Vue.extend({
                 <h4 class="text-white footer-title">Navigation</h4>
                 <ul class="footer-nav pl-0 mt-3">
                     <li><router-link class="f-nav-item" to="/">Home</router-link></li> 
-                    <li><router-link class="f-nav-item" to="/">About us</router-link></li>
+                    <li><router-link class="f-nav-item" to="/about">About us</router-link></li>
                     <li><router-link class="f-nav-item" to="/menu">Menu</router-link></li>
                     <li><router-link class="f-nav-item" to="/reservation">Reservation</router-link></li>
                     <li><router-link class="f-nav-item" to="/">Recipe</router-link></li>
-                    <li><router-link class="f-nav-item" to="/">Block</router-link></li>
+                    <li><router-link class="f-nav-item" to="/blog">Block</router-link></li>
                     <li><router-link class="f-nav-item" to="/about">Contact us</router-link></li>
                 </ul>
             </div>

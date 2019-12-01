@@ -18,6 +18,7 @@ export const store = new Vuex.Store({
     cartItems: 1,
     keyWord: 'all',
     currentReviewsIndex: 0,
+    isOpenMenu: false,
   },
   mutations: {
     addCartItem(state: any): void {
@@ -33,11 +34,15 @@ export const store = new Vuex.Store({
           state.currentReviewsIndex--;
         }
     },
+    openMenu(state: any): void {
+      state.isOpenMenu = !state.isOpenMenu;
+    },
   },
   getters: {
     getCartItems: (state: any): number => state.cartItems,
     getFilterKeyWord: (state: any): string => state.keyWord,
     getCurrentReviewsIndex: (state: any): number => state.currentReviewsIndex,
+    getMenuStatus: (state: any): boolean => state.isOpenMenu,
   },
   actions: {
     changeFilter(context, word: string): void {
@@ -45,6 +50,9 @@ export const store = new Vuex.Store({
     },
     changeReview(context, action: string): void {
       context.commit('changeReviewIndex', action);
+    },
+    openMenu(context): void {
+      context.commit('openMenu');
     },
   },
 });

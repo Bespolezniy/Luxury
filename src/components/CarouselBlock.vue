@@ -46,12 +46,12 @@ export default class CarouselBlock extends Vue {
         <div class="menu-img d-flex justify-content-center align-items-center">
           <img src="../assets/images/icon_food.png" alt="Menu">
         </div>
-        <router-link to="/about">Explore food menu</router-link>
+        <router-link to="/menu" id="link-carousel" class="nav-link">Explore food menu</router-link>
       </div>
       <div class="d-flex justify-content-center align-items-center mr-4">
         <img src="../assets/images/icon_reviews.png" alt="Reviews">
         <p class="reviews-text m-3">Read <span>reviews</span></p>
-        <a class="btn-reviews d-flex justify-content-center align-items-center" href="#Reviews">Reviews</a>
+        <a class="btn-reviews btn-warning d-flex justify-content-center align-items-center" href="#Reviews">Reviews</a>
       </div>
       <div class="d-flex justify-content-center align-items-center">
         <img src="../assets/images/icon_phone1.png" alt="Phone">
@@ -66,16 +66,6 @@ export default class CarouselBlock extends Vue {
 </template>
 
 <style>
-  @font-face {
-    font-family: 'PlayfairDisplay';
-    src: url('../assets/fonts/PlayfairDisplay/playfairdisplaybold.woff2') format('woff2'), 
-    url('../assets/fonts/PlayfairDisplay/playfairdisplaybold.woff') format('woff'), 
-    url('../assets/fonts/PlayfairDisplay/playfairdisplaybold.ttf') format('truetype');
-    font-weight: 700;
-    font-display: swap;
-    font-style: normal;
-}
-
   .slider-block {
     background: #edf1f3;
     font-family: "PlayfairDisplay", sans-serif;
@@ -162,13 +152,6 @@ export default class CarouselBlock extends Vue {
     width: 200px;
   }
 
-  .banner-menu a {
-    color: white;
-    font-size: 22px;
-    text-align: center;
-    width: 110px;
-  }
-
   .menu-img {
     background: black;
     border: 2px solid #fe4c8d;
@@ -217,8 +200,17 @@ export default class CarouselBlock extends Vue {
     width: 40px;
   }
 
-  .btn-reviews:hover {
-    color: transparent;
+   #link-carousel {
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    text-transform: none;
+    transition-duration: .15s;
+    width: 110px;
+    z-index: 10;
+  }
+
+  #link-carousel:hover {
     opacity: .6;
   }
 </style>
